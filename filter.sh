@@ -9,6 +9,7 @@ then
 fi
 
 mkdir -p markers
+mkdir -p 2markers
 
 total="$(find auto -name "*.demo" | wc -l)"
 current=0
@@ -19,7 +20,12 @@ do
 	if [ "$markers" -gt "0" ]
 	then
 		tw_demo "$demo" || exit 1
-		mv "$demo" markers/ || exit 1
+		if [ "$markers" -gt "1" ]
+		then
+			mv "$demo" 2markers/ || exit 1
+		else
+			mv "$demo" markers/ || exit 1
+		fi
 	fi
 	current="$((current + 1))"
 	if [[ "$((current % 10))" == "0" ]]
