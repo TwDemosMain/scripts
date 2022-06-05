@@ -28,9 +28,9 @@ do
 		fi
 	fi
 	current="$((current + 1))"
-	if [[ "$((current % 10))" == "0" ]]
+	if [[ "$((current % 100))" == "0" ]]
 	then
-		printf '[%3d/%3d] %s\n' "$current" "$total" "$demo"
+		printf '[%4d/%4d] %s\n' $current "$total" "$demo"
 	fi
 done < <(find auto -name "*.demo")
 
